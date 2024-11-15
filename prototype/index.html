@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonograph</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="menu-icon">☰</h1>
+        <h1>Sonograph</h1>
+    </header>
+    <nav id="menu" class="hidden">
+        <ul>
+            <li><button id="input-btn">Input</button></li>
+            <li><button id="output-btn">Output</button></li>
+            <li><button id="setup-btn">Setup</button></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="visualizer"></div>
+        <audio id="audioOutput" controls></audio>
+        <div id="input-panel" class="panel hidden">
+            <h2>Input</h2>
+            <div class="input-group">
+                <label for="input-type">Type</label>
+                <select id="input-type">
+                    <option value="microphone">Microphone</option>
+                    <option value="file">File</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="input-file">File</label>
+                <input type="file" id="input-file" accept="audio/*">
+            </div>
+            <div class="input-group">
+                <label for="input-microphone">Microphone</label>
+                <select id="input-microphone"></select>
+            </div>
+            <div class="input-group">
+                <button id="input-start">Start</button>
+                <button id="input-stop">Stop</button>
+            </div>
+            <button id="input-close">Close</button>
+        </div>
+        
+        <div id="output-panel" class="panel hidden">
+            <h2>Output</h2>
+            <div class="output-group">
+                <label for="output-type">Type</label>
+                <select id="output-type">
+                    <option value="speaker">Speaker</option>
+                    <option value="file">File</option>
+                </select>
+            </div>
+            <div class="output-group">
+                <label for="output-file">File</label>
+                <input type="file" id="output-file" accept="audio/*">
+            </div>
+            <div class="output-group">
+                <button id="output-start">Start</button>
+                <button id="output-stop">Stop</button>
+            </div>
+            <button id="output-close">Close</button>
+        </div>
+
+        <div id="setup-panel" class="panel hidden">
+            <h2>Setup</h2>
+            <div class="setup-group">
+                <label for="setup-sample-rate">Sample Rate</label>
+                <input type="number" id="setup-sample-rate" value="44100">
+            </div>
+            <div class="setup-group">
+                <label for="setup-buffer-size">Buffer Size</label>
+                <input type="number" id="setup-buffer-size" value="1024">
+            </div>
+            <div class="setup-group">
+                <label for="setup-fft-size">FFT Size</label>
+                <input type="number" id="setup-fft-size" value="1024">
+            </div>
+            <div class="setup-group">
+                <label for="setup-smoothing">Smoothing</label>
+                <input type="number" id="setup-smoothing" value="0.8">
+            </div>
+            <button id="setup-close">Close</button>
+        </div>
+
+        <div id="start-panel" class="panel">
+            <h2>Welcome to Sonograph</h2>
+            <button id="start-btn">START</button>
+        </div>
+
+    </main>
+
+    <script>
+        let audioContext;
+        let currentStream;
+        let analyser;
+        let dataArray;
+    </script>
+    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <script src="visualizers/blackwave.js"></script>
+
+</body>
+</html>
